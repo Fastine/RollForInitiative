@@ -1,0 +1,42 @@
+﻿@using RollForInitiative.Data
+@using System;
+@using System.Linq;
+@using System.Threading.Tasks;
+
+@if (combatants.Count <= 0)
+{
+    <span>Add a combatant to get started</span>
+}
+else
+{
+    //Render List of combatants
+    @foreach (Combatant combatant in combatants)
+    {
+        <span>@combatant.Name | @combatant.InitiativeCurrent | @combatant.HitPointsCurrent / @combatant.HitPointsMax</span>
+        <br />
+    }
+}
+
+@code {
+
+    public List<Combatant> combatants = new List<Combatant>();
+
+    //Dummy Data
+    Combatant Garrick = new Combatant(
+        "Garrick", 45, 70, 0, 22);
+    Combatant Skeleton = new Combatant(
+        "Skeleton", 10, 10, 0, 12);
+    Combatant Qren = new Combatant(
+        "Qren", 50, 55, 2, 16);
+    Combatant Valas = new Combatant(
+        "Valas", 40, 40, 8, 17);
+
+    protected override void OnInitialized()
+    {
+        //combatants.Add(Garrick);
+        //combatants.Add(Skeleton);
+        //combatants.Add(Qren);
+        //combatants.Add(Valas);
+    }
+
+}
